@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+main {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  background: rgb(253, 234, 234);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #a3616e;
+}
+
+li {
+  float: left;
+  border-right:1px solid black;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: rgb(253, 234, 234);
+  color: #9d3c50;
+  font-weight: bold;
+}
+
+.termekek {
+  padding: 5px;
+}
+
+h3 {
+  color: #9d3c50;
+}
+button {
+  background-color: #a3616e;
+  border: none;
+  color: white;
+  padding: 4px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #dfb2af;
+  color: black;
+}
+
+.kosarTermek {
+  display: grid;
+  grid-template-areas: "n a x";
+}
+
+.neve {
+  grid-area: n;
+  width: 200px;
+}
+.ara {
+  grid-area: a;
+}
+
+.x {
+  grid-area: x;
+  background-color: rgb(253, 234, 234);
+  color: rgb(252, 134, 134);
+  width: 20px;
+  height: 20px;
+  margin-top: 13px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  text-align: center;
+  padding: 2px 2px;
+  font-weight: bold;
+}
+
+#vt{
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 800px) {
+  main {
+    width: 100%;
+  }
+}

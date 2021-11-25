@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KN</title>
+    <link rel="stylesheet" href="../css/stilus.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/termek.js"></script>
+    <script src="../js/kosar.js"></script>
+    <script src="../js/js.js"></script>
+  </head>
+  <body>
+    <main>
+      <!-- <header></header> -->
+      <nav>
+        <ul>
+          <li><a href="../html/index.html">Kezdolap</a></li>
+          <li><a href="../html/fizetes.html">Fizetés</a></li>
+          <li style="float: right"><a href="../html/admin.html">Admin</a></li>
+        </ul>
+      </nav>
+      <div id="tartalom">
+        <div class="kereses">
+          <form >
+            <label>Keresés</label>
+            <input type="text" name="szo" id="szo" />
+            <button id="ok">➺</button>
+          </form>
+        </div>
+        <article class="t">
+          <div class="termek">
+            <h3></h3>
+            <img src="" alt="" />
+            <p></p>
+            <span></span>
+            <button>Kosárba</button>
+          </div>
+        </article>
+        <!-- <footer>KNA</footer> -->
+        <!-- <input type="button" class="gomb" value="Kosárba" /> -->
+        <section class="kosar">
+          <div id="kosar">
+            <h3>A Kosár tartalma</h3>
+            <div class="termekek"></div>
+            <button id="tovabb">
+              <a href="../html/fizetes.html" id="taf">Tovább a fizetéshez...</a>
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
