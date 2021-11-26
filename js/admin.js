@@ -16,6 +16,7 @@ $(function () {
       new TermekAdmin(ujElem, elem);
     });
     sablon.remove();
+    $(".modosit").hide();
   }
 
   function tKiir(toroltTermekek) {
@@ -32,12 +33,12 @@ $(function () {
           elem.ar +
           '</td><td class="hGomb"><button>Helyreállít</button></td></tr>'
       );
-      $(".hGomb").on("click", () => {
-        console.log("helyreallit meg minden");
-        console.log(elem.id);
-        //ajaxHivas.postAjax(eleresiut, elem);
-        //ajaxHivas.deleteAjax(toroltT, elem.id);
-      });
+    });
+    $(".hGomb").on("click", () => {
+      console.log("helyreallit meg minden");
+      console.log();
+      //ajaxHivas.postAjax(eleresiut, elem);
+      //ajaxHivas.deleteAjax(toroltT, elem.id);
     });
   }
 
@@ -49,5 +50,23 @@ $(function () {
     ajaxHivas.deleteAjax(eleresiut, event.detail.id);
     //console.log(eleresiut + `/` + event.detail.id);
     //console.log(toroltTermekek);
+  });
+
+  $(window).on("termekModosit", (event) => {
+        $('#termeknev').attr('value', event.detail.nev);
+				$('#kep').attr('value', "");
+				$('#leiras').attr('value', event.detail.leiras);
+				$('#ar').attr('value', event.detail.ar);
+  });
+
+  $("#ok").on("click", ()=>{
+    $(".modosit").hide();
+    /* let adat=[
+      "nev"= $('#termeknev').val(),
+      "kep"=$('#kep').val(),
+      "leiras"=$('#leiras').val(),
+      "ar"=$('#ar').val()
+    ]; */
+    
   });
 });

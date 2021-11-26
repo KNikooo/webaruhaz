@@ -20,16 +20,40 @@
           <li style="float: right"><a href="../html/admin.html">Admin</a></li>
         </ul>
       </nav>
-        <table id="tablazat1">
-          <tr class="termek">
-            <td class="nev"></td>
-            <!-- <td class="kep"></td> -->
-            <td class="leiras"></td>
-            <td class="ar"></td>
-            <td class="mGomb"><button>Modósít</button></td>
-            <td class="tGomb"><button>Töröl</button></td>
-          </tr>
-        </table>
+      <table id="tablazat1">
+        <tr class="termek">
+          <td class="nev"></td>
+          <!-- <td class="kep"></td> -->
+          <td class="leiras"></td>
+          <td class="ar"></td>
+          <td class="mGomb"><button>Modósít</button></td>
+          <td class="tGomb"><button>Töröl</button></td>
+        </tr>
+      </table>
+      <aside class="modosit">
+        <form>
+          <fieldset>
+            <legend>Termék adatok</legend>
+            <div>
+              <label for="termeknev">Termék neve</label>
+              <input type="text" name="termeknev" id="termeknev" /><br />
+            </div>
+            <div>
+              <label for="kep">Kép</label>
+              <input type="text" name="kep" id="kep" /><br />
+            </div>
+            <div>
+              <label for="leiras">Leírás</label>
+              <input type="text" name="leiras" id="leiras" /><br />
+            </div>
+            <div>
+              <label for="ar">Ár</label>
+              <input type="number" name="ar" id="ar" title="Csak számok" /><br />
+            </div>
+            <input type="button" id="ok" value="Mentés" />
+          </fieldset>
+        </form>
+      </aside>
       <div id="tolroltElemek">
         
       </div>

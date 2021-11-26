@@ -46,6 +46,7 @@ class TermekAdmin extends Termek{
     this.setAdatok(this.adat);
     this.gomb1.on("click", () => {
       console.log("modosit");
+      $(".modosit").show();
       this.ModositTrigger();
     });
     this.gomb2.on("click", () => {
