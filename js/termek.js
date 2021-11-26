@@ -40,20 +40,22 @@ class TermekAdmin extends Termek{
     this.kep = this.elem.children(".kep");
     this.leiras = this.elem.children(".leiras");
     this.ar = this.elem.children(".ar");
-    this.gomb2 = this.elem.children(".mGomb");
-    this.gomb1 = this.elem.children(".tGomb");
+    this.gomb1 = this.elem.children(".mGomb");
+    this.gomb2 = this.elem.children(".tGomb");
     console.log(this.cim);
     this.setAdatok(this.adat);
     this.gomb1.on("click", () => {
-      console.log(":(:");
-      this.TorolTrigger();
-    });
-    this.gomb2.on("click", () => {
       console.log("modosit");
       this.ModositTrigger();
     });
+    this.gomb2.on("click", () => {
+      console.log(":(:");
+      this.TorolTrigger();
+    });
   }
+  
   TorolTrigger() {
+    console.log(this);
     let esemeny = new CustomEvent("termekTorol", { detail: this.adat });
     window.dispatchEvent(esemeny);
   }

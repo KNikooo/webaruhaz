@@ -1,45 +1,33 @@
 $(function () {
   const termekek = [];
-  const szulo = $("article");
-  const sablon = $(".termek");
-  const szulo2 = $("section");
-  const sablon2 = $(".termekek");
-  let aktIndex = 0;
 
+  const ajaxHivas = new AjaxHivas();
   let eleresiut = "http://localhost:3000/termekek";
-  $("#ok").on("click",()=>{
-    console.log("➺");
+  let szoK = "?q=";
+  ajaxHivas.getAjax(eleresiut, kiir);
+
+  $("#szo").on("keyup",function(){
+    let szo=($("#szo").val());
+    ajaxHivas.getAjax(eleresiut+szoK+szo, kiir);
   });
+  /* $("#ok").on("click", () => {
+    console.log("➺");
+  }); */
 
   const ujKosar = new Kosar();
-  adatBeolvasas("../termekek.json", termekek, kiir); 
-  var i = 0;
-  function kiir() {
-    termekek.forEach((elem, index) => {
-      //sablon.append('<div class="termek"><h3>'+elem.nev+'</h3><img src="'+elem.kep+'" alt="'+elem.nev+'"><p>'+elem.leiras+'</p><span>'+elem.ar+' Ft</span><input type="button" id="gomb'+i+'" value="Kosárba">');
-      //i++;
+  function kiir(termekek) {
+    const szulo = $(".t");
+    const sablon = $(".sablon .termek");
+    szulo.empty();
+    sablon.show();
+    termekek.forEach((elem) => {
       const ujElem = sablon.clone().appendTo(szulo);
-      const ujKartya = new TermekGaleria(ujElem, elem, index);
-      console.log(index);
+      const ujKartya = new TermekGaleria(ujElem, elem);
     });
-    sablon.remove();
-  }
-
-  function adatBeolvasas(fajlNev, tomb, myCallback) {
-    $.ajax({
-      url: fajlNev,
-      success: function (result) {
-        result.termekek.forEach((elem) => {
-          tomb.push(elem);
-        });
-        console.log(tomb);
-        myCallback();
-      },
-    });
+    sablon.hide();
   }
 
   $(window).on("kosarbaRak", (event) => {
     ujKosar.setMegjelenit(event.detail);
   });
-  
 });

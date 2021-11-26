@@ -1,76 +1,53 @@
-$(function() {
-	const termekek = [];
-	const toroltTermekek = [];
-	const szulo = $('#tablazat1');
-	const sablon = $('.termek');
-	let eleresiut = 'http://localhost:3000/termekek';
-	/* adatBeolvasas('../termekek.json', termekek, kiir); */
-	var i = 0;
-	function kiir() {
-		termekek.forEach((elem, index) => {
-			const ujElem = sablon.clone().appendTo(szulo);
-			new TermekAdmin(ujElem, elem);
-			//console.log(index);
-		});
-		sablon.remove();
-	}
+$(function () {
+  const ajaxHivas = new AjaxHivas();
+  let eleresiut = "http://localhost:3000/termekek";
+  let toroltT = "http://localhost:3000/torolT";
+  /* adatBeolvasas('../termekek.json', termekek, kiir); */
 
-	myAjax(eleresiut, termekek, kiir);
-	function myAjax(eleresiut, tomb, myCallback) {
-		tomb.splice(0, tomb.length);
-		$.ajax({
-			url: eleresiut,
-			type: 'GET',
-			success: function(result) {
-				result.forEach((elem) => {
-					tomb.push(elem);
-				});
-				myCallback(tomb);
-			}
-		});
-	}
+  ajaxHivas.getAjax(eleresiut, kiir);
+  ajaxHivas.getAjax(toroltT, tKiir);
 
-	let modosit={
-		"id": 1,
-		"nev": "Mandarin szappan",
-		"leiras": "Móka és kacagás vár a fürdőkárdban",
-		"ar": 1479,
-		"kep": "../szappan/0.jpg"
-	};
+  function kiir(termekek) {
+    const szulo = $("#tablazat1");
+    const sablon = $(".termek");
 
-	$(window).on('termekTorol', (event) => {
-		console.log(':D');
-		console.log(event.detail);
-		toroltTermekek.push(event.detail);
-		//myAjaxDelete(eleresiut, event.detail.id);
-		console.log(eleresiut + `/` + event.detail.id);
-		console.log(toroltTermekek);
-	});
+    termekek.forEach((elem) => {
+      const ujElem = sablon.clone().appendTo(szulo);
+      new TermekAdmin(ujElem, elem);
+    });
+    sablon.remove();
+  }
 
-	function toroltElemekKiir() {
-		$('#tolroltElemek').empty();
-		$('#tolroltElemek').append('<h3>Törölt elemek:</h3>');
-		$('#tolroltElemek').append('<table>');
-		toroltTermekek.forEach((elem) => {
-			$('#tolroltElemek table').append(
-				'<tr><td class="nev">' +
-					elem.nev +
-					'</td><td class="leiras">' +
-					elem.leiras +
-					'</td><td class="ar">' +
-					elem.ar +
-					'</td><td class="hGomb"><button>Helyreállít</button></td></tr>'
-			);
-		});
-	}
+  function tKiir(toroltTermekek) {
+    $("#tolroltElemek").empty();
+    $("#tolroltElemek").append("<h3>Törölt elemek:</h3>");
+    $("#tolroltElemek").append("<table>");
+    toroltTermekek.forEach((elem) => {
+      $("#tolroltElemek table").append(
+        '<tr><td class="nev">' +
+          elem.nev +
+          '</td><td class="leiras">' +
+          elem.leiras +
+          '</td><td class="ar">' +
+          elem.ar +
+          '</td><td class="hGomb"><button>Helyreállít</button></td></tr>'
+      );
+      $(".hGomb").on("click", () => {
+        console.log("helyreallit meg minden");
+        console.log(elem.id);
+        //ajaxHivas.postAjax(eleresiut, elem);
+        //ajaxHivas.deleteAjax(toroltT, elem.id);
+      });
+    });
+  }
 
-	function myAjaxDelete(eleresiut, id) {
-		$.ajax({
-			url: eleresiut + `/` + id,
-			type: 'DELETE',
-			success: function(result) {
-				myAjax(eleresiut, termekek, kiir);
-			}
-		});
-	}
+  $(window).on("termekTorol", (event) => {
+    console.log(":D");
+    console.log(event.detail);
+    //toroltTermekek.push(event.detail);
+    ajaxHivas.postAjax(toroltT, event.detail);
+    ajaxHivas.deleteAjax(eleresiut, event.detail.id);
+    //console.log(eleresiut + `/` + event.detail.id);
+    //console.log(toroltTermekek);
+  });
 });
