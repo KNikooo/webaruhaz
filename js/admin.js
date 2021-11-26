@@ -1,72 +1,57 @@
-$(function () {
-  const ajaxHivas = new AjaxHivas();
-  let eleresiut = "http://localhost:3000/termekek";
-  let toroltT = "http://localhost:3000/torolT";
-  /* adatBeolvasas('../termekek.json', termekek, kiir); */
+$(function() {
+	const ajaxHivas = new AjaxHivas();
+	let eleresiut = 'http://localhost:3000/termekek';
+	let toroltT = 'http://localhost:3000/torolT';
 
-  ajaxHivas.getAjax(eleresiut, kiir);
-  ajaxHivas.getAjax(toroltT, tKiir);
+	ajaxHivas.getAjax(eleresiut, kiir);
+	ajaxHivas.getAjax(toroltT, kiir2);
 
-  function kiir(termekek) {
-    const szulo = $("#tablazat1");
-    const sablon = $(".termek");
+	function kiir(termekek) {
+		const szulo = $('#tablazat1');
+		const sablon = $('.termek');
 
-    termekek.forEach((elem) => {
-      const ujElem = sablon.clone().appendTo(szulo);
-      new TermekAdmin(ujElem, elem);
-    });
-    sablon.remove();
-    $(".modosit").hide();
-  }
+		termekek.forEach((elem) => {
+			const ujElem = sablon.clone().appendTo(szulo);
+			new TermekAdmin(ujElem, elem);
+		});
+		sablon.remove();
+		$('.modosit').hide();
+	}
 
-  function tKiir(toroltTermekek) {
-    $("#tolroltElemek").empty();
-    $("#tolroltElemek").append("<h3>Törölt elemek:</h3>");
-    $("#tolroltElemek").append("<table>");
-    toroltTermekek.forEach((elem) => {
-      $("#tolroltElemek table").append(
-        '<tr><td class="nev">' +
-          elem.nev +
-          '</td><td class="leiras">' +
-          elem.leiras +
-          '</td><td class="ar">' +
-          elem.ar +
-          '</td><td class="hGomb"><button>Helyreállít</button></td></tr>'
-      );
-    });
-    $(".hGomb").on("click", () => {
-      console.log("helyreallit meg minden");
-      console.log();
-      //ajaxHivas.postAjax(eleresiut, elem);
-      //ajaxHivas.deleteAjax(toroltT, elem.id);
-    });
-  }
+	function kiir2(torolT) {
+		const szulo = $('#tablazat2');
+		const sablon = $('.termek2');
 
-  $(window).on("termekTorol", (event) => {
-    console.log(":D");
-    console.log(event.detail);
-    //toroltTermekek.push(event.detail);
-    ajaxHivas.postAjax(toroltT, event.detail);
-    ajaxHivas.deleteAjax(eleresiut, event.detail.id);
-    //console.log(eleresiut + `/` + event.detail.id);
-    //console.log(toroltTermekek);
-  });
+		torolT.forEach((elem) => {
+			const ujElem = sablon.clone().appendTo(szulo);
+			new TermekAdmin(ujElem, elem);
+		});
+		sablon.remove();
+		$('.modosit').hide();
+	}
 
-  $(window).on("termekModosit", (event) => {
-        $('#termeknev').attr('value', event.detail.nev);
-				$('#kep').attr('value', "");
-				$('#leiras').attr('value', event.detail.leiras);
-				$('#ar').attr('value', event.detail.ar);
-  });
+	$(window).on('termekTorol', (event) => {
+		console.log(':D');
+		console.log(event.detail);
+		ajaxHivas.postAjax(toroltT, event.detail);
+		ajaxHivas.deleteAjax(eleresiut, event.detail.id);
+		//console.log(eleresiut + `/` + event.detail.id);
+	});
 
-  $("#ok").on("click", ()=>{
-    $(".modosit").hide();
-    /* let adat=[
-      "nev"= $('#termeknev').val(),
-      "kep"=$('#kep').val(),
-      "leiras"=$('#leiras').val(),
-      "ar"=$('#ar').val()
-    ]; */
-    
-  });
+	$(window).on('termekModosit', (event) => {
+		$('#termeknev').attr('value', event.detail.nev);
+		$('#kep').attr('value', '');
+		$('#leiras').attr('value', event.detail.leiras);
+		$('#ar').attr('value', event.detail.ar);
+	});
+
+	$(window).on('termekHelyreallit', (event) => {
+		console.log(event.detail);
+		ajaxHivas.postAjax(eleresiut, event.detail);
+		ajaxHivas.deleteAjax(toroltT, event.detail.id);
+	});
+
+	$('#ok').on('click', () => {
+		$('.modosit').hide();
+	});
 });
