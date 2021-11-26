@@ -39,8 +39,11 @@ $(function() {
 	});
 
 	$(window).on('termekModosit', (event) => {
+		$('#i').hide();
+		$('#k').hide();
+		$('#id').attr('value', event.detail.id);
 		$('#termeknev').attr('value', event.detail.nev);
-		$('#kep').attr('value', '');
+		$('#kep').attr('value', event.detail.kep);
 		$('#leiras').attr('value', event.detail.leiras);
 		$('#ar').attr('value', event.detail.ar);
 	});
@@ -52,6 +55,21 @@ $(function() {
 	});
 
 	$('#ok').on('click', () => {
-		$('.modosit').hide();
+		//$('.modosit').hide();
+		let id = $('#id').val();
+		let kep = $('#kep').val();
+		let nev = $('#termeknev').val();
+		let leiras = $('#leiras').val();
+		let ar = $('#ar').val();
+
+    let adat={
+      "id":id,
+      "nev":nev,
+	  "kep":kep,
+      "leiras":leiras,
+      "ar":ar
+    }
+		console.log(id);
+		ajaxHivas.putAjax(eleresiut, adat, id);
 	});
 });
