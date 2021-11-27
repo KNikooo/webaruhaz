@@ -15,13 +15,6 @@
       "kep": "../szappan/2.jpg"
     },
     {
-      "id": 6,
-      "nev": "Teafaolajos szappan",
-      "leiras": "Univerzális szappan zsíros bőrre: arcra, testre, hajra",
-      "ar": 1674,
-      "kep": "../szappan/8.jpg"
-    },
-    {
       "id": 7,
       "nev": "Édesnarancs-eukaliptusz szappan",
       "kep": "../szappan/4.jpg",
@@ -38,19 +31,19 @@
     {
       "id": "1",
       "nev": "Mandarin szappan",
-      "leiras": "Móka és kacagás vár a fürdőkárdban",
-      "ar": "1479",
-      "kep": "../szappan/0.jpg"
+      "kep": "../szappan/0.jpg",
+      "leiras": "Móka és kacagás vár a fürdőben",
+      "ar": "1479"
+    },
+    {
+      "id": "4",
+      "nev": "Sószappan",
+      "leiras": "Érezd a tenger sós érintését a bőrödön",
+      "ar": "990",
+      "kep": "../szappan/3.jpg"
     }
   ],
   "torolT": [
-    {
-      "id": 4,
-      "nev": "Sószappan",
-      "leiras": "Érezd a tenger sós érintését a bőrödön",
-      "ar": 990,
-      "kep": "../szappan/3.jpg"
-    },
     {
       "id": "5",
       "nev": "Miniszappan válogatás",
@@ -64,6 +57,13 @@
       "leiras": "Radírozd a bőröd a sárgabarack erejével",
       "ar": "1674",
       "kep": "../szappan/6.jpg"
+    },
+    {
+      "id": "6",
+      "nev": "Teafaolajos szappan",
+      "leiras": "Univerzális szappan zsíros bőrre: arcra, testre, hajra",
+      "ar": "1674",
+      "kep": "../szappan/8.jpg"
     }
   ]
 }

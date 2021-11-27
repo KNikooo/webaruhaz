@@ -11,7 +11,7 @@
     <script src="../js/termek.js"></script>
     <script src="../js/kosar.js"></script>
     <script src="../js/js.js"></script>
-  </head>
+</head>
   <body>
     <main>
       <!-- <header></header> -->
@@ -23,9 +23,16 @@
         </ul>
       </nav>
       <div id="tartalom">
-        <div class="kereses">
+        <div class="kereses">     
           <form>
-            <label>Keresés</label>
+            <select name="rendezes" id="rendezes">
+              <option value="rendez">Rendezés</option>
+              <option value="ar1">0Ft-tól 3000-ig</option>
+              <option value="ar2">3000Ft-tól 6000-ig</option>
+              <option value="ar3">6000Ft felett</option>
+            </select>
+            <br><br>
+            <label>Keresés:</label><br>
             <input type="text" name="szo" id="szo" />
             <!-- <button id="ok">➺</button> -->
           </form>
